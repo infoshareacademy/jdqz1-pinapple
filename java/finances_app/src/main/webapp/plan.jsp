@@ -36,7 +36,15 @@
     <form action="/deleteEdit" method="post">
         <input class="hidden" name="token" value="${token}"/>
         <table class="table table-hover">
-        <tr>
+            <select>
+
+                <input
+                       TYPE="Submit" VALUE="Filter by Type of action"
+                       ONCLICK="${filter}">
+                <option value = "BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <tr>
             <th class="hidden">id</th>
             <th>exp.</th>
             <th>Asset</th>
@@ -67,6 +75,10 @@
         <input class="hidden" name="token" value="${token}"/>
         <button class="btn btn-default" name="AddPlan" type="submit">Add Plan</button>
     </form>
+    <form action="/crudServlet" method="post">
+        <input class=filter" name="filter" value="${filter}"/>
+        <button class="btn btn-default" name="Filter by Type of action" type="submit">Filter by Type of action</button>
+    </form>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -74,6 +86,7 @@
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.js"></script>
 <script src="resources/js/main.js"></script>
+
 
 <%@ include file="resources/footer.jsp" %>
 

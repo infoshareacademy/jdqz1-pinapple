@@ -44,7 +44,6 @@
                         ONCLICK="${filter}"></button>
             </select>
             <form action="/crudServlet" method="post">
-                <input class=filter" name="filter" value="${filter}"/>
                 <button name="Filter by Type of action" type="submit">Filter by Type of action</button>
             </form>
             <tr>

@@ -40,8 +40,14 @@
 
                 <option value = "BUY">BUY</option>
                 <option value="SELL">SELL</option>
-                <input TYPE="Submit" VALUE="Filter by Type of action" ONCLICK="${filter}">
+
+                <button type="submit" class = "filter" VALUE="Filter by Type of action"
+                        ONCLICK="${filter}"></button>
             </select>
+            <form action="/crudServlet" method="post">
+                <input class=filter" name="filter" value="${filter}"/>
+                <button class="btn btn-default" name="Filter by Type of action" type="submit">Filter by Type of action</button>
+            </form>
             <tr>
             <th class="hidden">id</th>
             <th>exp.</th>
@@ -73,10 +79,7 @@
         <input class="hidden" name="token" value="${token}"/>
         <button class="btn btn-default" name="AddPlan" type="submit">Add Plan</button>
     </form>
-    <form action="/crudServlet" method="post">
-        <input class=filter" name="filter" value="${filter}"/>
-        <button class="btn btn-default" name="Filter by Type of action" type="submit">Filter by Type of action</button>
-    </form>
+
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

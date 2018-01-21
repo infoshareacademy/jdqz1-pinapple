@@ -40,13 +40,12 @@
 
                 <option value = "BUY">BUY</option>
                 <option value="SELL">SELL</option>
-
                 <button type="submit" class = "filter" VALUE="Filter by Type of action"
                         ONCLICK="${filter}"></button>
             </select>
             <form action="/crudServlet" method="post">
                 <input class=filter" name="filter" value="${filter}"/>
-                <button class="btn btn-default" name="Filter by Type of action" type="submit">Filter by Type of action</button>
+                <button name="Filter by Type of action" type="submit">Filter by Type of action</button>
             </form>
             <tr>
             <th class="hidden">id</th>

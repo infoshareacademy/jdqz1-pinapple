@@ -38,11 +38,9 @@
         <table class="table table-hover">
             <select>
 
-                <input
-                       TYPE="Submit" VALUE="Filter by Type of action"
-                       ONCLICK="${filter}">
                 <option value = "BUY">BUY</option>
                 <option value="SELL">SELL</option>
+                <input TYPE="Submit" VALUE="Filter by Type of action" ONCLICK="${filter}">
             </select>
             <tr>
             <th class="hidden">id</th>

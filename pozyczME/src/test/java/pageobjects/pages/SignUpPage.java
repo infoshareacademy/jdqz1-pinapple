@@ -6,7 +6,7 @@ import pageobjects.User;
 public class SignUpPage {
 
     @FindBy(linkText = "Rejestracja")
-    private WebElement RegistationSide;
+    private WebElement registationSide;
 
     @FindBy(xpath = "//div[@id='tab-pane-2']//input[@id='username']")
     private WebElement username;
@@ -22,14 +22,14 @@ public class SignUpPage {
     private WebElement email;
 
     @FindBy(xpath = "//button[text()='Zarejestruj się']")
-    private WebElement RegisterButton;
+    private WebElement registerButton;
 
     public void clickOnRegisterSide(){
-        RegistationSide.click();
+        registationSide.click();
     }
 
     public WebElement getRegistationSide() {
-        return RegistationSide;
+        return registationSide;
     }
 
     public void setUserData(User user){
@@ -37,5 +37,6 @@ public class SignUpPage {
         password.sendKeys(user.getPass());
         email.sendKeys(user.getEmail());
     }
-    public void clickOnRegister() {RegisterButton.click();}
+    public void clickOnRegister() {
+        registerButton.click();}
 }

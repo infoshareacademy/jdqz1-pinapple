@@ -18,9 +18,17 @@ public class User {
         return email;
     }
 
+    public static String setPass(String pass) {
+
+        return pass;
+    }
+
     public User(String name, String pass, String email) {
         this.name = name;
         this.pass = pass;
         this.email = email;
+
     }
+
+
 }

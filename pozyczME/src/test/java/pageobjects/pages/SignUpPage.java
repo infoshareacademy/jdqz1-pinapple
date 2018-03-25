@@ -1,9 +1,10 @@
 package pageobjects.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageobjects.BaseAccess;
 import pageobjects.User;
 
-public class SignUpPage {
+public class SignUpPage extends BaseAccess{
 
     @FindBy(linkText = "Rejestracja")
     private WebElement registationSide;

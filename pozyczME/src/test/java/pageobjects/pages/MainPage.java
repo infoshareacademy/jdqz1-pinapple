@@ -1,10 +1,10 @@
 package pageobjects.pages;
 
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageobjects.BaseAccess;
 
-public class MainPage {
+public class MainPage extends BaseAccess{
 
     @FindBy(linkText = "Wyloguj")
     private WebElement logOutbutton;
@@ -43,7 +43,6 @@ public class MainPage {
     public void undoButtonNumbersOfPlayersClick(){
         undoButtonNumbersOfPlayers.click();
     }
-
 
     public WebElement getLogOutbutton() {
         return logOutbutton;

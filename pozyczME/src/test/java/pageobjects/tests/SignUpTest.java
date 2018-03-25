@@ -22,7 +22,7 @@ public class SignUpTest extends BaseClassTest{
 
 
         String pass = User.setPass("12345");
-                
+
 
 
         return new User[]{

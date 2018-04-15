@@ -14,10 +14,10 @@ public class Waits {
     }
 
     public void waitForElementToBeClickable(WebElement element) {
-        WebElement waitForElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForElementToBeVisible(WebElement element){
-        WebElement waitForElement = wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 }

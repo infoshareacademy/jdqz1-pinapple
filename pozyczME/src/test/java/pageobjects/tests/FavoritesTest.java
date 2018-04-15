@@ -1,14 +1,9 @@
 package pageobjects.tests;
-
-
 import org.junit.Before;
 import org.junit.Test;
-
 import pageobjects.BaseClassTest;
-
+import pageobjects.User;
 import pageobjects.pages.MyProfilePage;
-
-
 import static org.junit.Assert.*;
 
 
@@ -20,11 +15,13 @@ public class FavoritesTest extends BaseClassTest {
     public void setUp() {
         prepareEnvForTests();
         myProfilePage = new MyProfilePage(driver);
+        RegisterAndLogin(new User("aaaaa", "12345", "www@wp.pl"));
     }
 
     @Test
     public void addToFavorites() {
 
+        mywait.waitForElementToBeVisible(mainPage.getMenuButtonOurGames());
         mainPage.clickOnOurGames();
         mainPage.clickOnHeartbutton();
         mywait.waitForElementToBeClickable(mainPage.getMenuButtonMyProfile());

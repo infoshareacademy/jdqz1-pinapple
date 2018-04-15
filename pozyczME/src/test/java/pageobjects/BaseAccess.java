@@ -1,6 +1,7 @@
 package pageobjects;
 
 import org.openqa.selenium.WebDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -25,11 +26,9 @@ public class BaseAccess {
             }
         }
         if(buildEnv.equals("DEV")){
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
-
-
         driver.get(getURL());
     }
 

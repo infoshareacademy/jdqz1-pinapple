@@ -1,7 +1,6 @@
 package pageobjects;
 
 import org.openqa.selenium.WebDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -26,9 +25,11 @@ public class BaseAccess {
             }
         }
         if(buildEnv.equals("DEV")){
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", "/home/waldemar/Pobrane/jdqz1-pinapple/pozyczME/src/test/resources/chromedriver");
             driver = new ChromeDriver();
         }
+
+
         driver.get(getURL());
     }
 

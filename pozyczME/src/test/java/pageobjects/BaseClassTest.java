@@ -1,8 +1,14 @@
 package pageobjects;
 
 import org.junit.After;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.pages.*;
+
+
 
 public class BaseClassTest extends BaseAccess{
 
@@ -10,6 +16,11 @@ public class BaseClassTest extends BaseAccess{
     protected MainPage mainPage;
     protected SignInPage signIn;
     protected User user;
+
+    @BeforeClass
+    public static void setDriver(){
+        driver = new WebDriverProvider(WebDriverCreators.CHRONE).getDriver();
+    }
 
     public void prepareEnvForTests(){
 
@@ -19,7 +30,7 @@ public class BaseClassTest extends BaseAccess{
     }
 
     protected void initializeBasicPageFactoryWithWaits(){
-        mywait=new Waits(driver);
+        mywait= new Waits(driver);
         signIn = PageFactory.initElements(driver,SignInPage.class);
         signUp = PageFactory.initElements(driver, SignUpPage.class);
         mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -38,8 +49,11 @@ public class BaseClassTest extends BaseAccess{
         signIn.clickOnSignIn();
     }
 
-    @After
-    public void tearDown() { driver.close(); }
+
+    @AfterClass
+    public static void tearDown() {
+        driver.close();
+    }
 
 
 }

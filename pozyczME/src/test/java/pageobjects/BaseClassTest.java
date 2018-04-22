@@ -1,8 +1,12 @@
 package pageobjects;
 
-import org.junit.After;
+import org.junit.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.pages.*;
+
+
 
 public class BaseClassTest extends BaseAccess{
 
@@ -11,15 +15,23 @@ public class BaseClassTest extends BaseAccess{
     protected SignInPage signIn;
     protected User user;
 
+    @Rule
+    public ScreenShotOnFailure failure = new ScreenShotOnFailure();
+
+    @Before
+    public void getDriverUrl(){
+        prepareDriver();
+        driver.get(getURL());
+    }
+
     public void prepareEnvForTests(){
 
-        prepareDriver();
         initializeBasicPageFactoryWithWaits();
         RegisterAndLogin(new User("aaaaa", "12345", "www@wp.pl"));
     }
 
     protected void initializeBasicPageFactoryWithWaits(){
-        mywait=new Waits(driver);
+        mywait= new Waits(driver);
         signIn = PageFactory.initElements(driver,SignInPage.class);
         signUp = PageFactory.initElements(driver, SignUpPage.class);
         mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -38,8 +50,12 @@ public class BaseClassTest extends BaseAccess{
         signIn.clickOnSignIn();
     }
 
-    @After
-    public void tearDown() { driver.close(); }
+
+//    @After
+//    public void tearDown() {
+//        if(driver != null)
+//        driver.quit();
+//    }
 
 
 }

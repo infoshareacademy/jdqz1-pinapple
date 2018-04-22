@@ -1,26 +1,23 @@
 package pageobjects.tests;
 
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
-import pageobjects.pages.SearchForPage;
-import pageobjects.pages.SignInPage;
 import pageobjects.BaseClassTest;
+import pageobjects.ScreenShotOnFailure;
 import pageobjects.User;
-import pageobjects.Waits;
-import pageobjects.pages.MainPage;
-import pageobjects.pages.SignUpPage;
+import pageobjects.pages.SearchForPage;
+
 import static org.junit.Assert.assertTrue;
 
-public class SearchForTest extends BaseClassTest{
+public class SearchForTest extends BaseClassTest {
 
     private SearchForPage searchForPage;
 
     @Before
     public void setUp() {
 
-        prepareDriver();
         initializeBasicPageFactoryWithWaits();
         searchForPage = PageFactory.initElements(driver, SearchForPage.class);
         RegisterAndLogin(new User("aaaaa", "12345", "www@wp.pl"));
@@ -42,6 +39,7 @@ public class SearchForTest extends BaseClassTest{
         searchForPage.setSearchField("sc");
         assertTrue("OurGamesbutton is not displayed", searchForPage.isOurGamesbuttonVisible());
     }
+
     @Test
     public void addSearchWordScrrable() {
 
@@ -49,5 +47,6 @@ public class SearchForTest extends BaseClassTest{
         searchForPage.setSearchField("Scrabble");
         assertTrue("SearchField is not displayed", searchForPage.isSearchFieldVisible());
     }
+
 
 }

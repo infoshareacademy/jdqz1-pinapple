@@ -1,7 +1,6 @@
 package pageobjects;
 
 import org.openqa.selenium.WebDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -11,12 +10,12 @@ import java.net.URL;
 
 public class BaseAccess {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
     private static final String HOMEURL = "http://app.pinapple.jdqz1.is-academy.pl/";
     protected Waits mywait;
-    private String buildEnv = System.getProperty("buildEnv");
+    private static String buildEnv = System.getProperty("buildEnv");
 
-    protected void prepareDriver(){
+    protected static void prepareDriver(){
 
         if(buildEnv.equals("CI")){
             try {
@@ -26,10 +25,14 @@ public class BaseAccess {
             }
         }
         if(buildEnv.equals("DEV")){
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
             driver = new ChromeDriver();
         }
-        driver.get(getURL());
+
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public static String getURL() {

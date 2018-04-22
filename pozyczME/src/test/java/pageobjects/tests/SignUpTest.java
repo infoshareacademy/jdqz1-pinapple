@@ -34,7 +34,6 @@ public class SignUpTest extends BaseClassTest{
 
     @Before
     public void setUp() {
-        prepareDriver();
         initializeBasicPageFactoryWithWaits();
     }
 

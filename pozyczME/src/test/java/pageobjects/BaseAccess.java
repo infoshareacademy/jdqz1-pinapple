@@ -10,12 +10,12 @@ import java.net.URL;
 
 public class BaseAccess {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
     private static final String HOMEURL = "http://app.pinapple.jdqz1.is-academy.pl/";
     protected Waits mywait;
-    private String buildEnv = System.getProperty("buildEnv");
+    private static String buildEnv = System.getProperty("buildEnv");
 
-    protected void prepareDriver(){
+    protected static void prepareDriver(){
 
         if(buildEnv.equals("CI")){
             try {
@@ -25,12 +25,14 @@ public class BaseAccess {
             }
         }
         if(buildEnv.equals("DEV")){
-            System.setProperty("webdriver.chrome.driver", "/home/waldemar/Pobrane/jdqz1-pinapple/pozyczME/src/test/resources/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
             driver = new ChromeDriver();
         }
 
+    }
 
-        driver.get(getURL());
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public static String getURL() {

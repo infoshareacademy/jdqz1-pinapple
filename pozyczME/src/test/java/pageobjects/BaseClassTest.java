@@ -1,10 +1,8 @@
 package pageobjects;
 
-import org.junit.After;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.pages.*;
 
@@ -17,14 +15,17 @@ public class BaseClassTest extends BaseAccess{
     protected SignInPage signIn;
     protected User user;
 
-    @BeforeClass
-    public static void setDriver(){
-        driver = new WebDriverProvider(WebDriverCreators.CHRONE).getDriver();
+    @Rule
+    public ScreenShotOnFailure failure = new ScreenShotOnFailure();
+
+    @Before
+    public void getDriverUrl(){
+        prepareDriver();
+        driver.get(getURL());
     }
 
     public void prepareEnvForTests(){
 
-        prepareDriver();
         initializeBasicPageFactoryWithWaits();
         RegisterAndLogin(new User("aaaaa", "12345", "www@wp.pl"));
     }
@@ -50,10 +51,11 @@ public class BaseClassTest extends BaseAccess{
     }
 
 
-    @AfterClass
-    public static void tearDown() {
-        driver.close();
-    }
+//    @After
+//    public void tearDown() {
+//        if(driver != null)
+//        driver.quit();
+//    }
 
 
 }

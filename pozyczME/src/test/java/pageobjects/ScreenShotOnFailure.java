@@ -18,19 +18,16 @@ public class ScreenShotOnFailure extends TestWatcher {
 
     @Override
     protected void failed(Throwable e, Description description) {
-        //Convert web driver object to TakeScreenshot
 
-        TakesScreenshot scrShot =((TakesScreenshot)getDriver());
 
-        //Call getScreenshotAs method to create image file
+        TakesScreenshot scrShot = ((TakesScreenshot) getDriver());
 
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-        //Move image file to new destination
+        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
-        File DestFile=new File("src/" + description.getMethodName() + LocalDateTime.now() + ".png");
 
-        //Copy file at destination
+        File DestFile = new File("src/" + description.getMethodName() + LocalDateTime.now() + ".png");
+
 
         try {
             FileUtils.copyFile(SrcFile, DestFile);
@@ -38,13 +35,13 @@ public class ScreenShotOnFailure extends TestWatcher {
             e1.printStackTrace();
         }
 
-        if(getDriver() != null)
+        if (getDriver() != null)
             getDriver().close();
     }
 
     @Override
     protected void finished(Description description) {
-        if(getDriver() != null)
+        if (getDriver() != null)
             getDriver().close();
     }
 }

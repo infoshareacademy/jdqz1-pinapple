@@ -26,7 +26,7 @@ public class ScreenShotOnFailure extends TestWatcher {
         File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
 
-        File DestFile = new File("src/" + description.getMethodName() + LocalDateTime.now() + ".png");
+        File DestFile = new File("src/test/java/pageobjects/tests/Screenshoots/" + description.getMethodName() + LocalDateTime.now() + ".png");
 
 
         try {
